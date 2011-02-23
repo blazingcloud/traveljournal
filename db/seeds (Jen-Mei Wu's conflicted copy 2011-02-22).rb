@@ -5,16 +5,3 @@
 #
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
-
-# To delete all cities in Rails console:
-# City.delete_all
-#
-cities = City.create([
-  { :name => 'Chattanooga' },
-  { :name => 'Chicago' },
-  { :name => 'Cincinnati' },
-  { :name => 'Detroit' },
-  { :name => 'Springfield' },
-  { :name => 'San Francisco' }
-])
-
