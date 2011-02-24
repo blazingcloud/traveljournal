@@ -2,12 +2,13 @@ require 'spec_helper'
 
 describe Hotel do
   before do
-    @detroit = City.create(:name => "Detroit")
+    @detroit = Factory.create(:city, :name => "Detroit")
   end
 
   describe "validations" do
 
     it "should be valid with valid attributes" do
+      # Not using a factory here to make validation more explicit
       @hotel = Hotel.new(:name => "The St. Clair", :city => @detroit)
       @hotel.should be_valid
     end
@@ -27,7 +28,7 @@ describe Hotel do
       end
 
       it "should not be valid with a name shorter than 2 characters" do
-        @hotel.errors.full_messages.should include("City can't be blank")
+        @hotel.errors.full_messages.should include("Name is too short (minimum is 2 characters)")
       end
 
       it "should have a city" do
@@ -42,17 +43,8 @@ describe Hotel do
 
   describe "#yet_to_visit" do
     before do
-      @visited_hotel = Hotel.create(
-        :name => "Been There Motel", 
-        :visited => true,
-        :city => @detroit
-      )
-
-      @unvisited_hotel = Hotel.create(
-        :name => "Let's Go Lodge",
-        :visited => false,
-        :city => @detroit
-      )
+      @visited_hotel = Factory.create(:hotel, :visited => true)
+      @unvisited_hotel = Factory.create(:hotel, :visited => false)
     end
 
     it "should return unvisited hotels" do

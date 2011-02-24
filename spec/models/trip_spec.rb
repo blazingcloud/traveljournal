@@ -3,11 +3,12 @@ require 'spec_helper'
 describe Trip do
   describe "validation" do
     before do
-      @detroit = City.create!(:name => "Detroit")
-      @st_clair_hotel = Hotel.create!(:name => "St. Clair Hotel", :city => @detroit)
+      @detroit = Factory.create(:city, :name => "Detroit")
+      @st_clair_hotel = Factory.create(:hotel, :name => "St. Clair Hotel", :city => @detroit)
     end
 
     it "should be valid with valid attributes" do
+      # Not using a factory here to make the validity test more explicit
       @trip = Trip.new(
         :name => "Visit Shanghai",
         :hotel => @st_clair_hotel
