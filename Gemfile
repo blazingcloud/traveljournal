@@ -11,4 +11,5 @@ group :test, :development do
   gem 'RedCloth'
   gem 'capybara'
   gem 'ruby-debug'
+  gem 'launchy'
 end
