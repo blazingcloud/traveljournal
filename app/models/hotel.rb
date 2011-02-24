@@ -4,6 +4,7 @@ class Hotel < ActiveRecord::Base
   before_save :ensure_name_is_in_titlecase
   belongs_to :city
   has_many :trips
+  validates_presence_of :city
 
   def self.yet_to_visit
     #where(:visited => false)
