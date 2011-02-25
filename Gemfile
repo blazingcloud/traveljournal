@@ -12,4 +12,5 @@ group :test, :development do
   gem 'capybara'
   gem 'ruby-debug'
   gem 'launchy'
+  gem 'metric_fu'
 end
